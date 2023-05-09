@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import { CheckSession } from './services/Auth'
 import Register from './pages/Register'
 import Login from './pages/Login'
+import Nav from './components/Nav.jsx'
 
 const App = () => {
   const [authenticated, toggleAuthenticated] = useState(false)
