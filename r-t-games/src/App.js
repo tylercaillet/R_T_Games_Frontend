@@ -1,25 +1,93 @@
-import logo from './logo.svg';
-import './App.css';
+import './index.css'
+import { Routes, Route } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { CheckSession } from './services/Auth'
+import Register from './pages/Register'
+import Login from './pages/Login'
 
-function App() {
+const App = () => {
+  const [authenticated, toggleAuthenticated] = useState(false)
+  const [user, setUser] = useState(null)
+
+  const handleLogOut = () => {
+    setUser(null)
+    toggleAuthenticated(false)
+    localStorage.clear()
+  }
+
+  const checkToken = async () => {
+    const user = await CheckSession()
+    setUser(user)
+    toggleAuthenticated(true)
+  }
+
+  useEffect(() => {
+    const token = localStorage.getItem('token')
+    if (token) {
+      checkToken()
+    }
+  }, [])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <div>
+        <header>
+          <Nav
+            authenticated={authenticated}
+            user={user}
+            handleLogOut={handleLogOut}
+          />
+        </header>
+        <main>
+          <Routes>
+            {/* <Route
+              index
+              element={<Home user={user} authenticated={authenticated} />}
+            />
+            <Route path="/listing" element={<LostOnesCard />} />
+            <Route
+              path="/listing/:id"
+              element={
+                <LostOnesDetails user={user} authenticated={authenticated} />
+              }
+            />
+            <Route
+              path="/new_comment/user/:userId/listing/:listingId"
+              element={
+                <NewCommentForm user={user} authenticated={authenticated} />
+              }
+            />
+            <Route
+              path="/edit_comment/user/:userId/listing/:listingId/comment/:commentId"
+              element={
+                <EditCommentForm user={user} authenticated={authenticated} />
+              }
+            />
+            <Route path="/listing/new_listing" element={<NewListingForm />} />
+            <Route
+              path="/listing/:listingId/edit_listing"
+              element={<EditListingForm />}
+            />
+
+            <Route path="/register" element={<Register />} />
+            <Route
+              path="/login"
+              element={
+                <Login
+                  setUser={setUser}
+                  toggleAuthenticated={toggleAuthenticated}
+                />
+              }
+            />
+            <Route path="/about_us" element={<AboutUs />} /> */}
+          </Routes>
+        </main>
+        <footer>
+          {/* <Footer authenticated={authenticated} user={user} /> */}
+        </footer>
+      </div>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
