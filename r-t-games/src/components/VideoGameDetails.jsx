@@ -3,11 +3,11 @@ import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import { useParams } from 'react-router-dom'
-import Comments from './Comments'
+import Reviews from './Reviews'
 import { DestroyListing } from '../services/Auth'
 import { BASE_URL } from '../globals'
 
-const LostOnesDetails = ({ user }) => {
+const VideoGameDetails = ({ user }) => {
     let navigate = useNavigate()
     let { id } = useParams()
 
@@ -46,52 +46,51 @@ const LostOnesDetails = ({ user }) => {
             </button>
             <main className='details-main'>
                 <div className='details-card'>
-                    <h2 className='details-name'><span className='details-title'>Name:&nbsp;</span> {lostOne.petName}</h2>
-                    <img src={lostOne.petImage} alt='pet-image' id='details-pic'></img>
-                    <h3><span className='details-title'>Description:</span> &nbsp;{lostOne.description}</h3>
-                    <h3><span className='details-title'>Sex:</span>&nbsp;{lostOne.sex}</h3>
-                    <h3><span className='details-title'>Species:</span> &nbsp;{lostOne.species}</h3>
-                    <h3><span className='details-title'>Last Seen:</span> &nbsp;{lostOne.lastSeen}</h3>
+                    <h2 className='details-name'><span className='details-title'>Title:&nbsp;</span> {videoGame.title}</h2>
+                    <img src={videoGame.image} alt='game-image' id='details-pic'></img>
+                    <h3><span className='details-title'>Rating:</span>&nbsp;{videoGame.rating}</h3>
+                    <h3><span className='details-title'>Year:</span> &nbsp;{videoGame.year}</h3>
+                    <h3><span className='details-title'>Description:</span> &nbsp;{videoGame.description}</h3>
                     <div>
                         <button
-                            id="view-pet-button"
+                            id="view-game-button"
                             onClick={() => navigate(`/listing`)}
                         >
                             Go Back
                         </button>
                         <button
-                            id="view-pet-button"
+                            id="view-game-button"
                             onClick={() => navigate(`/listing/${id}/edit_listing`)}
                         >
-                            Edit Info
+                            Edit Game
                         </button>
                     </div>
                 </div>
             </main>
-            <header className='comment-header'>
-                <h1 className=''>Comments</h1>
+            <header className='review-header'>
+                <h1 className=''>Reviews</h1>
             </header>
             <section>
-                {comments?.map((comment) => (
-                    <Comments
-                        id={comment?.id}
-                        key={comment?.id}
-                        userId={comment?.userId}
-                        listingId={comment?.listingId}
-                        comment={comment?.comment}
-                        getComments={getComments}
+                {reviews?.map((review) => (
+                    <Reviews
+                        id={review?.id}
+                        key={review?.id}
+                        userId={review?.userId}
+                        listingId={review?.listingId}
+                        review={review?.review}
+                        getReviews={getReviews}
                     />
                 ))}
             </section>
             <button
-                id="view-pet-button"
-                onClick={() => navigate(`/new_comment/user/${user.id}/listing/${id}`)}
+                id="view-game-button"
+                onClick={() => navigate(`/new_review/user/${user.id}/listing/${id}`)}
             >
-                Add A Comment
+                Add A Review
             </button>
         </div>
 
     )
 }
 
-export default LostOnesDetails
+export default VideoGameDetails

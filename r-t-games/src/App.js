@@ -41,34 +41,34 @@ const App = () => {
         </header>
         <main>
           <Routes>
-            {/* <Route
+             <Route
               index
               element={<Home user={user} authenticated={authenticated} />}
             />
-            <Route path="/listing" element={<LostOnesCard />} />
+            <Route path="/listing" element={<VideoGameCard />} />
             <Route
               path="/listing/:id"
               element={
-                <LostOnesDetails user={user} authenticated={authenticated} />
+                <VideoGameDetails user={user} authenticated={authenticated} />
               }
             />
-            <Route
-              path="/new_comment/user/:userId/listing/:listingId"
+            {/* <Route
+              path="/new_review/user/:userId/listing/:listingId"
               element={
                 <NewCommentForm user={user} authenticated={authenticated} />
               }
-            />
-            <Route
+            /> */}
+            {/* <Route
               path="/edit_comment/user/:userId/listing/:listingId/comment/:commentId"
               element={
                 <EditCommentForm user={user} authenticated={authenticated} />
               }
-            />
-            <Route path="/listing/new_listing" element={<NewListingForm />} />
-            <Route
+            /> */}
+            {/* <Route path="/listing/new_listing" element={<NewListingForm />} /> */}
+            {/* <Route
               path="/listing/:listingId/edit_listing"
               element={<EditListingForm />}
-            />
+            /> */}
 
             <Route path="/register" element={<Register />} />
             <Route
@@ -80,7 +80,7 @@ const App = () => {
                 />
               }
             />
-            <Route path="/about_us" element={<AboutUs />} /> */}
+            {/* <Route path="/about_us" element={<AboutUs />} /> */}
           </Routes>
         </main>
         <footer>
