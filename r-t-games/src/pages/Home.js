@@ -1,9 +1,18 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
+import Footer from '../components/Footer'
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
+
 
 const Home = ({ user, authenticated }) => {
-  const navigate = useNavigate()
-  return user && authenticated ? (
+    const navigate = useNavigate()
+
+return (
     <div>
       <header id="showcase">
         <h1>Welcome to R & T Games!</h1>
@@ -16,61 +25,57 @@ const Home = ({ user, authenticated }) => {
         <p>
           If you click on Video Games, you should be able to see a listing of games that the community has put together along with a description and rating.
         </p>
-        <button id="read-me-button" onClick={() => navigate('/about_us')}>
+        <button id="read-me-button" onClick={() => navigate('/about')}>
           About Us
         </button>
-      </header>
-      <div class="swiper">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide swiper-slide--one">
-          <div>
-             {/* <img src='https://pixelz.cc/wp-content/uploads/2017/11/borderlands-2-logo-uhd-4k-wallpaper.jpg' alt='borderlands 2' />  */}
-          </div>
-        </div>
-       
-        <div class="swiper-slide swiper-slide--two">
-          <div>
-              {/* <a href="https://en.wikipedia.org/wiki/Seahorse" target="_blank">explore</a> */}
-          </div>
-        </div>
-
-        <div class="swiper-slide swiper-slide--three">
-          <div>
-               {/* <a href="https://en.wikipedia.org/wiki/Octopus" target="_blank">explore</a> */}
-          </div>
-        </div>
-
-        <div class="swiper-slide swiper-slide--four">
-          <div>
-               {/* <a href="https://en.wikipedia.org/wiki/Shark" target="_blank">explore</a>  */}
-          </div>
-        </div>
-
-        <div class="swiper-slide swiper-slide--five">
-          <div>
-               {/* <a href="https://en.wikipedia.org/wiki/Dolphin" target="_blank">explore</a>  */}
-          </div>
-        </div>
-      </div>
-      {/* <!-- Add Pagination --> */}
-      <div class="swiper-pagination"></div>
-      <img src="https://cdn.pixabay.com/photo/2012/04/13/13/57/scallop-32506_960_720.png" alt="" class="bg2" />
-
-<script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
-<script src="/script.js"></script>
-      </div>
-     </div>
-      
-  ) : (
-    <div className="protected">
-      <h3 className="please-signin">
-        Oops! You must be logged in to have access to the community!
-      </h3>
-      <button className="form-button" onClick={() => navigate('/login')}>
-        Login
-      </button>
+    </header>
+    <h2 id="reunited">Fan Favorites</h2>
+    <p id="swipe-p">*swipe to see games</p>
+    <div id="swiper-container">
+    <Swiper
+      // install Swiper modules
+      modules={[Navigation, Pagination, Scrollbar, A11y]}
+      spaceBetween={10}
+      slidesPerView={3}
+      navigation
+      pagination={{ clickable: true }}
+      scrollbar={{ draggable: true }}
+      onSwiper={(swiper) => console.log(swiper)}
+      onSlideChange={() => console.log('slide change')}
+    >
+      <SwiperSlide>
+        <img src="https://cdn.realsport101.com/images/ncavvykf/realsport-production/8daef9e845763dda5386768dc05f52a6d4318c06-1280x720.png?rect=0,0,1279,720&w=700&h=394&dpr=2" alt="god-of-war" className="home-image"></img>
+      </SwiperSlide>
+      <SwiperSlide>
+        <img src="https://www.nicepng.com/png/detail/145-1456343_batman-arkham-city-logo-batman-arkham-city-title.png" alt="Batman: Arkham City" className="home-image"></img>
+      </SwiperSlide>
+      <SwiperSlide>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/7/71/Halo_3_Logo.png" alt="Halo 3" className="home-image"></img>
+      </SwiperSlide>
+      <SwiperSlide>
+        <img src="https://cdna.artstation.com/p/assets/images/images/011/891/874/large/chx-king-logo-04.jpg?1531954283" alt="BioShock" className="home-image"></img>
+      </SwiperSlide>
+      <SwiperSlide>
+        <img src="https://mir-s3-cdn-cf.behance.net/project_modules/fs/790fc838044305.5754741e8bce0.jpg" alt="Undertale" className="home-image"></img>
+      </SwiperSlide>
+      <SwiperSlide>
+        <img src="https://images.nintendolife.com/164b10bdd71f4/metroid-prime-logo.large.jpg" alt="Metroid Prime" className="home-image"></img>
+      </SwiperSlide>
+      <SwiperSlide>
+        <img src="https://upload.wikimedia.org/wikipedia/en/d/d2/Gears_of_War_logo.PNG" alt="Gears Of War" className="home-image"></img>
+      </SwiperSlide>
+      <SwiperSlide>
+        <img src="https://cdn.cloudflare.steamstatic.com/steam/apps/292030/header.jpg?t=1675178392" alt="The Witcher 3: Wild Hunt" className="home-image"></img>
+      </SwiperSlide>
+      ...
+    </Swiper>
     </div>
-  )
+      <footer>
+          <Footer authenticated={authenticated} user={user}  />
+      </footer>
+    </div>
+)
 }
+
 
 export default Home

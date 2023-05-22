@@ -12,6 +12,7 @@ const VideoGameCard = () => {
   const getVideoGames = async () => {
     const response = await axios.get(`${BASE_URL}/listing`)
     setVideoGames(response.data)
+    // console.log(response.data)
   }
 
   useEffect(() => {
@@ -20,24 +21,29 @@ const VideoGameCard = () => {
 
   return (
     <div className="videoGame-container">
+      <div id="header-button-container">
       <header className="videoGame-header">
-        <h1>Video Games</h1>
+        <h1 id='video-game-h1'>Video Games</h1>
       </header>
+      <div className='button-container'>
       <button
-        id="view-game-button"
+        id="read-me-button"
         onClick={() => navigate(`/listing/new_listing`)}
       >
         Add A Video Game
       </button>
+      </div>
+      </div>
       <main className="videoGame-main">
         {videoGames?.map((videoGame) => (
+          
           <div className="videoGame-card" key={videoGame.id}>
             <h2 id="videoGame-name">{videoGame.title}</h2>
             <button
-              id="view-game-button"
+              id="read-me-button"
               onClick={() => navigate(`/listing/${videoGame.id}`)}
             >
-              View Pet
+              View Game
             </button>
             <img src={videoGame.image} alt="videoGame" id="videoGame-pic"></img>
           </div>

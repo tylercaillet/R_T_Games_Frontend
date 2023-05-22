@@ -3,6 +3,7 @@ import Client from './api'
 export const RegisterUser = async (data) => {
   try {
     const res = await Client.post('/register', data)
+    console.log(data)
     return res.data
   } catch (error) {
     throw error
@@ -28,10 +29,24 @@ export const CheckSession = async () => {
   }
 }
 
+export const GetUser = async (token) => {
+  try {
+    const response = await Client.get(`/session`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    console.error('Error retrieving user information:', error);
+    throw error;
+  }
+};
+
 export const CreateReview = async (data) => {
     try {
       const res = await Client.post(
-        `/comment/new_comment/user/${data.userId}/listing/${data.listingId}`,
+        `/review/new_review/user/${data.userId}/listing/${data.listingId}`,
         data
       )
       return res.data
@@ -42,7 +57,7 @@ export const CreateReview = async (data) => {
   
   export const UpdateReview = async (data) => {
     try {
-      const res = await Client.put(`/comment/${data.id}`, data)
+      const res = await Client.put(`/review/${data.id}`, data)
       return res.data
     } catch (error) {
       throw error
@@ -51,7 +66,7 @@ export const CreateReview = async (data) => {
   
   export const DestroyReview = async (data) => {
     try {
-      const res = await Client.delete(`/comment/${data.id}`, data)
+      const res = await Client.delete(`/review/${data.id}`, data)
       return res.data
     } catch (error) {
       throw error

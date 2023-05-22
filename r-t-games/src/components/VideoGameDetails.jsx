@@ -27,8 +27,8 @@ const VideoGameDetails = ({ user }) => {
     const [reviews, setReviews] = useState(null)
 
     const getReviews = async () => {
-        const response = await axios.get(`${BASE_URL}/review/`)
-        setComments(response.data)
+        const response = await axios.get(`${BASE_URL}/review`)
+        setReviews(response.data)
     }
 
     useEffect(() => {
@@ -39,18 +39,18 @@ const VideoGameDetails = ({ user }) => {
     return (
         <div className="details-container">
             <header className='details-header'>
-                <h1>Video Games</h1>
+                <h1>{videoGame.title}</h1>
             </header>
-            <button onClick={handleDelete} id="delete-edit-button1">
-                Delete Game
-            </button>
-            <main className='details-main'>
+            <div className="delete-container">
+                <button onClick={handleDelete} id="delete-edit-button1">Delete Game</button>
+            </div>
+            <main className='details-container'>
                 <div className='details-card'>
-                    <h2 className='details-name'><span className='details-title'>Title:&nbsp;</span> {videoGame.title}</h2>
                     <img src={videoGame.image} alt='game-image' id='details-pic'></img>
-                    <h3><span className='details-title'>Rating:</span>&nbsp;{videoGame.rating}</h3>
-                    <h3><span className='details-title'>Year:</span> &nbsp;{videoGame.year}</h3>
-                    <h3><span className='details-title'>Description:</span> &nbsp;{videoGame.description}</h3>
+                    <h1 id='details-name'><span className='details-title'>Title</span>:&nbsp;{videoGame.title}</h1>
+                    <h3><span className='details-title'>Rating</span>:&nbsp;&nbsp;{videoGame.rating}</h3>
+                    <h3><span className='details-title'>Year:</span> &nbsp;&nbsp;{videoGame.year}</h3>
+                    <h3><span className='details-title'>Description</span>:&nbsp;&nbsp;{videoGame.description}</h3>
                     <div>
                         <button
                             id="view-game-button"
@@ -82,12 +82,14 @@ const VideoGameDetails = ({ user }) => {
                     />
                 ))}
             </section>
-            <button
-                id="view-game-button"
-                onClick={() => navigate(`/new_review/user/${user.id}/listing/${id}`)}
-            >
-                Add A Review
-            </button>
+            <div className="button-container1">
+                <button
+                    id="view-game-button1"
+                    onClick={() => navigate(`/new_review/user/${user.id}/listing/${id}`)}
+                >
+                    Add A Review
+                </button>
+            </div>
         </div>
 
     )

@@ -1,5 +1,6 @@
+import React from 'react'
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import { LoginUser } from '../services/Auth'
 
 const Login = ({ toggleAuthenticated, setUser }) => {
@@ -9,7 +10,6 @@ const Login = ({ toggleAuthenticated, setUser }) => {
   const handleChange = (e) => {
     setFormValues({ ...formValues, [e.target.name]: e.target.value })
   }
-
   const handleSubmit = async (e) => {
     e.preventDefault()
     const payload = await LoginUser(formValues)
@@ -18,36 +18,39 @@ const Login = ({ toggleAuthenticated, setUser }) => {
     toggleAuthenticated(true)
     navigate('/')
   }
-
   return (
-    <div className="signin col">
-      <div className="card-overlay centered">
-        <form className="col" onSubmit={handleSubmit}>
-            <label  className="label"htmlFor="username">Username</label>
-            <input
-             className="input"
-              onChange={handleChange}
-              name="username"
-              type="username"
-              placeholder="username"
-              value={formValues.username}
-              required
-            />
-            <label className="label"htmlFor="password">Password</label>
-            <input
-             className="input"
-              onChange={handleChange}
-              type="password"
-              name="password"
-              value={formValues.password}
-              required
-            />
-          <button disabled={!formValues.username || !formValues.password}>
-            Sign In
-          </button>
-        </form>
-      </div>
+<div className="login-box">
+  <h2>Login</h2>
+  <form onSubmit={handleSubmit}>
+    <div className="user-box">
+      <input type="username" name="username" required="" onChange={handleChange} placeholder="Johndoe123" value={formValues.username}>
+      </input>
+      <label>Username</label>
     </div>
+    <div className="user-box">
+      <input type="password" name="password" required="" onChange={handleChange} placeholder="*****" value={formValues.password}></input>
+      <label>Password</label>
+    </div>
+    <button disabled={
+              !formValues.username ||
+              (!formValues.password &&
+                formValues.confirmPassword === formValues.password)
+            } id="submit">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      Sign In
+    </button>
+    <button id="register-link">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+        <Link to="/register" >Register Here</Link>
+    </button>
+  </form>
+</div>
   )
 }
 

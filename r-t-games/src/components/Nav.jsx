@@ -1,4 +1,5 @@
 import { NavLink } from 'react-router-dom'
+import logo from '../images/R__T_Games_copy-transformed.png'
 
 const NavBar = ({ authenticated, user, handleLogOut }) => {
     let userOptions;
@@ -6,9 +7,9 @@ const NavBar = ({ authenticated, user, handleLogOut }) => {
         userOptions = (
             <div className="nav-text">
                 <NavLink to='/' className='zoom nav-link home'>Home</NavLink>
-                <NavLink to={`/listing/${user.id}`} className='zoom nav-links listing'>Video Games</NavLink>
                 <NavLink to='/about' className='zoom nav-links about'>About</NavLink>
-                <NavLink to='/review' className='zoom nav-links review'>Reviews</NavLink>
+                <NavLink to={`/listing`} className='zoom nav-links listing'>Video Games</NavLink>
+                {/* <NavLink to='/review' className='zoom nav-links review'>Reviews</NavLink> */}
                 <NavLink onClick={handleLogOut} to='/' className='zoom nav-links logout'>Log Out</NavLink>
             </div>
         );
@@ -27,7 +28,8 @@ const NavBar = ({ authenticated, user, handleLogOut }) => {
     return (
         <div>
             <div className="header">
-                <div className="header-text">R-T-GAMES</div>
+                <div className="header-text">
+                </div>
                 <h1 className='username-display'>Welcome{user && ` ${user.username}`}!</h1>
                 <nav className="nav-container">
                     <div>
