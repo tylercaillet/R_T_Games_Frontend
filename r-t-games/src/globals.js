@@ -1,4 +1,5 @@
-const BASE_URL = 'http://localhost:3001/api'
+const BASE_URL = 'https://r-t-games-backend.herokuapp.com//api'
+
 
 module.exports = {
   BASE_URL
