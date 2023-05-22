@@ -1,4 +1,4 @@
-const BASE_URL = 'https://r-t-games-backend.herokuapp.com//api'
+const BASE_URL = 'https://r-t-games-backend.herokuapp.com/api'
 
 
 module.exports = {

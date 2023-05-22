@@ -1,4 +1,5 @@
-import React from "https://cdn.skypack.dev/react";
+// import React from "https://cdn.skypack.dev/react";
+import React from 'react'
 import ReactDOM from "https://cdn.skypack.dev/react-dom";
 import tylerSuit from "../images/IMG_2136.png"
 import tylerSnap from "../images/Tyler Snapchat.png"
