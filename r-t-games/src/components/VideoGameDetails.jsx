@@ -28,7 +28,7 @@ const VideoGameDetails = ({ user }) => {
 
     const getReviews = async () => {
         const response = await axios.get(`${BASE_URL}/review/`)
-        setComments(response.data)
+        setReviews(response.data)
     }
 
     useEffect(() => {

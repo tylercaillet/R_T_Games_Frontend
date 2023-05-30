@@ -5,6 +5,9 @@ import { CheckSession } from './services/Auth'
 import Register from './pages/Register'
 import Login from './pages/Login'
 import Nav from './components/Nav.jsx'
+import Home from './pages/Home'
+import VideoGameCard from './pages/VideoGameCard'
+import VideoGameDetails from './components/VideoGameDetails'
 
 const App = () => {
   const [authenticated, toggleAuthenticated] = useState(false)
