@@ -1,5 +1,6 @@
 import { NavLink } from 'react-router-dom'
 import logo from '../images/R__T_Games_copy-transformed.png'
+import React from 'react'
 
 const NavBar = ({ authenticated, user, handleLogOut }) => {
     let userOptions;

@@ -1,4 +1,5 @@
 import './index.css'
+import React from 'react'
 import { Routes, Route } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { CheckSession } from './services/Auth'
@@ -13,7 +14,6 @@ import EditListingForm from './pages/EditListingForm'
 import NewListingForm from './pages/NewListingForm'
 import EditReviewForm from './pages/EditReviewForm'
 import NewReviewForm from './pages/NewReviewForm'
-
 
 const App = () => {
   const [authenticated, toggleAuthenticated] = useState(false)
@@ -62,7 +62,7 @@ const App = () => {
               }
             />
             <Route path="/about" element={<About />} />
-          <Route
+            <Route
               path="/listing/:listingId/edit_listing"
               element={<EditListingForm />}
             />
@@ -82,7 +82,7 @@ const App = () => {
             <Route
               path="/listing/:listingId/edit_listing"
               element={<EditListingForm />}
-            /> 
+            />
 
             <Route path="/register" element={<Register />} />
             <Route
