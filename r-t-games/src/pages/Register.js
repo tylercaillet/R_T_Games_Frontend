@@ -28,72 +28,42 @@ const Register = () => {
   }
 
   return (
-    <div className="signin col">
-      <div className="card-overlay centered">
-        <form className="col" onSubmit={handleSubmit}>
-            {/* <label className="label" htmlFor="name">Name</label>
-            <input
-            className="input"
-              onChange={handleChange}
-              name="name"
-              type="text"
-              placeholder="John Smith"
-              value={formValues.name}
-              required
-            /> */}
-            {/* <label  className="label" htmlFor="email">Email</label>
-            <input
-            className="input"
-              onChange={handleChange}
-              name="email"
-              type="email"
-              placeholder="example@example.com"
-              value={formValues.email}
-              required
-            /> */}
-            <label  className="label" htmlFor="username">Username</label>
-            <input
-            className="input"
-              onChange={handleChange}
-              name="username"
-              type="text"
-              placeholder="johndoe1234"
-              value={formValues.username}
-              required
-            />
-            <label  className="label" htmlFor="password">Password</label>
-            <input
-            className="input"
-              onChange={handleChange}
-              type="password"
-              name="password"
-              value={formValues.password}
-              required
-            />
-            <label  className="label" htmlFor="confirmPassword">Confirm Password</label>
-            <input
-            className="input"
-              onChange={handleChange}
-              type="password"
-              name="confirmPassword"
-              value={formValues.confirmPassword}
-              required
-            />
-          <button
-            disabled={
+    <div className="login-box">
+  <h2>Login</h2>
+  <form onSubmit={handleSubmit}>
+    <div className="user-box">
+      <input type="username" name="username" required="" onChange={handleChange} placeholder="Johndoe123" value={formValues.username}>
+      </input>
+      <label>Username</label>
+    </div>
+    <div className="user-box">
+      <input type="password" name="password" required="" onChange={handleChange} placeholder="*****" value={formValues.password}></input>
+      <label>Password</label>
+    </div>
+    <div className="user-box">
+      <input type="password" name="confirmPassword" required="" onChange={handleChange} placeholder="*****" value={formValues.confirmPassword}></input>
+      <label>Confirm Password</label>
+    </div>
+    <button disabled={
               !formValues.username ||
               (!formValues.password &&
                 formValues.confirmPassword === formValues.password)
-            }
-          >
-            Register
-          </button>
-        </form>
-        <Link to={'/login'}>
-        <button>Already A User?</button>
-      </Link>
-      </div>
-    </div>
+            } id="submit">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      register
+    </button>
+    <button id="register-link">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+        <Link to="/login" >Already A User?</Link>
+    </button>
+  </form>
+</div>
   )
 }
 

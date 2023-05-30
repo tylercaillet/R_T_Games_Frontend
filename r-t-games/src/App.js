@@ -4,10 +4,16 @@ import { useEffect, useState } from 'react'
 import { CheckSession } from './services/Auth'
 import Register from './pages/Register'
 import Login from './pages/Login'
-import Nav from './components/Nav.jsx'
+import NavBar from './components/Nav.jsx'
 import Home from './pages/Home'
 import VideoGameCard from './pages/VideoGameCard'
 import VideoGameDetails from './components/VideoGameDetails'
+import About from './pages/About'
+import EditListingForm from './pages/EditListingForm'
+import NewListingForm from './pages/NewListingForm'
+import EditReviewForm from './pages/EditReviewForm'
+import NewReviewForm from './pages/NewReviewForm'
+
 
 const App = () => {
   const [authenticated, toggleAuthenticated] = useState(false)
@@ -36,7 +42,7 @@ const App = () => {
     <div>
       <div>
         <header>
-          <Nav
+          <NavBar
             authenticated={authenticated}
             user={user}
             handleLogOut={handleLogOut}
@@ -44,7 +50,7 @@ const App = () => {
         </header>
         <main>
           <Routes>
-             <Route
+            <Route
               index
               element={<Home user={user} authenticated={authenticated} />}
             />
@@ -55,23 +61,28 @@ const App = () => {
                 <VideoGameDetails user={user} authenticated={authenticated} />
               }
             />
-            {/* <Route
-              path="/new_review/user/:userId/listing/:listingId"
-              element={
-                <NewCommentForm user={user} authenticated={authenticated} />
-              }
-            /> */}
-            {/* <Route
-              path="/edit_comment/user/:userId/listing/:listingId/comment/:commentId"
-              element={
-                <EditCommentForm user={user} authenticated={authenticated} />
-              }
-            /> */}
-            {/* <Route path="/listing/new_listing" element={<NewListingForm />} /> */}
-            {/* <Route
+            <Route path="/about" element={<About />} />
+          <Route
               path="/listing/:listingId/edit_listing"
               element={<EditListingForm />}
-            /> */}
+            />
+            <Route
+              path="/new_review/user/:userId/listing/:listingId"
+              element={
+                <NewReviewForm user={user} authenticated={authenticated} />
+              }
+            />
+            <Route
+              path="/edit_review/user/:userId/listing/:listingId/review/:reviewId"
+              element={
+                <EditReviewForm user={user} authenticated={authenticated} />
+              }
+            />
+            <Route path="/listing/new_listing" element={<NewListingForm />} />
+            <Route
+              path="/listing/:listingId/edit_listing"
+              element={<EditListingForm />}
+            /> 
 
             <Route path="/register" element={<Register />} />
             <Route
@@ -83,12 +94,8 @@ const App = () => {
                 />
               }
             />
-            {/* <Route path="/about_us" element={<AboutUs />} /> */}
           </Routes>
         </main>
-        <footer>
-          {/* <Footer authenticated={authenticated} user={user} /> */}
-        </footer>
       </div>
     </div>
   )

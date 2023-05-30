@@ -1,57 +1,36 @@
-import React from 'react'
-import styled from 'styled-components'
-import linkedinIcon from '../images/linkedin-logo.png'
-import githubIcon from '../images/github-logo.png'
-import mailIcon from '../images/mail-logo.png'
+import React from "react";
 
-const FooterDiv = styled.div`
-  padding-top: 1rem;
-  padding-bottom: 0;
-  background-color: black;
-  box-shadow:0px -3px 6px 4px #d3d3d3;
-  text-align: center;
-  max-height: 20rem;
-  position: relative;
-  bottom: 0;
-  width: 100%;
-  a img {
-  transition: all .4s;
-  height: 35px;
-  width: 35px;
-  border-radius: 5px;
-}
-a img:hover {
-  transform: scale(1.1);
-}
-`;
-
-const IconList = styled.div`
-  display: flex;
-  flex-direction: row-reverse;
-  justify-content: space-between;
-  align-content: center;
-  max-width: 70%;
-  margin: 0 auto;
-  height: 3.3rem;
-`
 
 const Footer = ({ user, authenticated }) => {
     return user && authenticated ? (
-        <FooterDiv>
-            <IconList>
-                <a className="icon" href="https://github.com/rycaillet"><img src={githubIcon} alt="GitHub" />&nbsp;&nbsp;Github</a>
-                <a className="icon" href="https://www.linkedin.com/in/ryan-caillet/"><img src={linkedinIcon} alt="LinkedIn" />&nbsp;&nbsp;LinkedIn</a>
-                <a className="icon" href="mailto:ryancaillet1995@gmail.com"><img src={mailIcon}
-                    alt="rycaillet@aol.com" />&nbsp;&nbsp;Email</a>
-            </IconList>
-            <img src="/images/Find_A_Pet-logo1.png" alt="website logo" className='logo' />
-            <br />
-            <div className="row" id="copyright" style={{ margin: 0 }}>
-                <div className="col-lg-12">
-                    <p className="small">©2022 Ryan Caillet</p>
-                </div>
+        <div className="footer-box">
+            <div className="footer-creators-container-ryan">
+                <h2 className="footer-item">Ryan Caillet</h2>
+                <a href='https://www.linkedin.com/in/ryan-caillet/'>
+                    <img className="footer-image" src={`https://i.imgur.com/GQpmYIM.png`} alt={`Linked In logo`} width='20px' />
+                    <h3 className="footer-item">LinkedIn</h3>
+                </a>
+                <a href='https://github.com/rycaillet'>
+                    <img className="footer-image" src={`https://i.imgur.com/cjwavRj.png`} alt={`Linked In logo`} width='20px' height='20px' />
+                    <h3 className="footer-item">Github</h3>
+                </a>
             </div>
-        </FooterDiv>
+            <div className="footer-creators-container-tyler">
+                <h2 className="footer-item">Tyler Caillet</h2>
+                <a href='https://www.linkedin.com/in/tyler-caillet/'>
+                    <img className="footer-image" src={`https://i.imgur.com/GQpmYIM.png`} alt={`Linked In logo`} width='20px' />
+                    <h3 className="footer-item">LinkedIn</h3>
+                </a>
+                <a href='https://github.com/tylercaillet'>
+                    <img className="footer-image" src={`https://i.imgur.com/cjwavRj.png`} alt={`Linked In logo`} width='20px' height='20px' />
+                    <h3 className="footer-item">Github</h3>
+                </a>
+            </div>
+            <div className="copyright">
+                Copyright @2023
+            </div>
+        </div>
+
     ) : (
         <div></div>
     )
