@@ -1,14 +1,21 @@
 {
-    "plugins": ["@babel/plugin-syntax-dynamic-import"],
-    "presets": [
-      [
-        "@babel/preset-env",
-        {
-          "targets": {
-            "node": "14"
-          }
+  "plugins": ["@babel/plugin-syntax-dynamic-import"],
+  "presets": [
+    [
+      "@babel/preset-react",
+      {
+        "targets": {
+          "node": "14"
         }
-      ]
+      }
+    ],
+    [
+      "@babel/preset-env",
+      {
+        "targets": {
+          "node": "14"
+        }
+      }
     ]
-  }
-  
+  ]
+}
