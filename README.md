@@ -28,11 +28,11 @@
 
 ---
 
-#### Link to Trello Board: [Trello](https://trello.com/b/naXdDCjY/game-over-p4)
+#### Link to Trello Board: [Trello](https://trello.com/b/naXdDCjY/game-over-api)
 
 ### ERD
 
-![image](./images/ERD.png)
+![image](https://trello.com/1/cards/63910860b6511c01c5fed654/attachments/639112162813d10220dc72c9/download/Game_Over.png)
 
 ---
 
